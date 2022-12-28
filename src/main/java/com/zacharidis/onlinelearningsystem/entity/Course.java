@@ -1,11 +1,10 @@
-
-
 package com.zacharidis.onlinelearningsystem.entity;
 
 import java.util.Objects;
 
 public class Course {
     private Long courseId;
+    // non-nullable
     private String courseName;
     private String courseDuration;
     private String courseDescription;
