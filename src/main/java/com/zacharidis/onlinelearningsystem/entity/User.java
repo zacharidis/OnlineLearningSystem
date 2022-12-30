@@ -93,4 +93,16 @@ public class User {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
+
+    public void assignRoleToUser(Role role){
+        this.roles.add(role);
+        role.getUsers().add(this);
+
+    }
+
+    public void removeRoleFromUser(Role role){
+        this.roles.remove(role);
+        role.getUsers().remove(this);
+    }
+
 }
