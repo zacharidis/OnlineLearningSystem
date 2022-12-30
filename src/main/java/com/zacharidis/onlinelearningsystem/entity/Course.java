@@ -94,6 +94,21 @@ public class Course {
         return Objects.equals(courseId, course.courseId) && Objects.equals(courseName, course.courseName) && Objects.equals(courseDuration, course.courseDuration) && Objects.equals(courseDescription, course.courseDescription);
     }
 
+
+    // helper method
+    public void assignStudentToCourse(Student student) {
+        this.students.add(student);
+        student.getCourses().add(this);
+
+    }
+
+    public  void removeStudentFromCourse(Student student){
+        this.students.remove(student);
+        student.getCourses().remove(this);
+    }
+
+
+
     @Override
     public int hashCode() {
         return Objects.hash(courseId, courseName, courseDuration, courseDescription);
