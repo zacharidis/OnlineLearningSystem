@@ -1,10 +1,44 @@
 package com.zacharidis.onlinelearningsystem.entity;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
+import javax.annotation.processing.Generated;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+@Entity
+@Table(name="courses")
 public class Course {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="course_id",nullable = false)
+    private Long courseId;
+    // non-nullable
+
+    @Basic
+    @Column(name = "course_name",nullable = false ,length = 45)
+    private String courseName;
+
+    @Basic
+    @Column (name = "course_duration",nullable = false,length = 45)
+    private String courseDuration;
+    @Basic
+    @Column (name = "course_description",nullable = false,length = 64)
+    private String courseDescription;
+
+    // can be taught by 1 instructor
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "instructor_id",referencedColumnName = "instructor_id",nullable = false)
+    private Instructor instructor;
+
+    @ManyToMany(fetch = FetchType.LAZY )
+    @JoinTable(name="enrolled_in",
+    joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name="student_id")})
+    private Set<Student> students = new HashSet<>();
+
 
     public Course() {
     }
@@ -74,16 +108,7 @@ public class Course {
         this.students = students;
     }
 
-    private Long courseId;
-    // non-nullable
-    private String courseName;
-    private String courseDuration;
-    private String courseDescription;
 
-    // can be taught by 1 instructor
-    private Instructor instructor;
-
-    private Set<Student> students = new HashSet<>();
 
 
     @Override
