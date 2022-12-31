@@ -34,6 +34,7 @@ public class Instructor {
     @JoinColumn(name="user_id",referencedColumnName = "user_id",nullable = false)
     private User user;
 
+
     @OneToMany(mappedBy = "instructor" ,fetch = FetchType.LAZY)
     private Set<Course> courses = new HashSet<>();
 
