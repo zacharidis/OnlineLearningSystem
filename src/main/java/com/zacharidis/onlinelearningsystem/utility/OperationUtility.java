@@ -48,6 +48,9 @@ public class OperationUtility {
     }
 
     private static void createUsers(UserDao userDao) {
+
+        //dummy users for testing
+
         User user1 = new User("user1@gmail.com","root");
         userDao.save(user1);
 
