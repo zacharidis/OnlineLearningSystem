@@ -50,8 +50,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "userId=" + userId +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
+                ", email='" + email +
                 '}';
     }
 
